@@ -8,7 +8,8 @@ public class Movement : MonoBehaviour
     
     [SerializeField] private float walkingSpeed;
     [SerializeField] private float dashDistance;
-    [SerializeField] private float dashSpeed;    
+    [SerializeField] private float dashSpeed;
+    [SerializeField] private float jumpForce;
     [SerializeField] private LineRenderer lineRenderer;
     private Rigidbody rb;
     private bool canDash;
@@ -20,11 +21,15 @@ public class Movement : MonoBehaviour
     void Start()
     {
         dashing = false;
+        rb = gameObject.GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+       
+
         if (Input.GetAxis("Horizontal") != 0)
         {
             transform.Translate(transform.right * walkingSpeed * Time.deltaTime * Input.GetAxis("Horizontal"), Space.World);
@@ -65,6 +70,11 @@ public class Movement : MonoBehaviour
         if (canDash)
         {
             DashCount();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space) && IsTouchingFloor())
+        {
+            Jump();
         }
     }
 
@@ -112,11 +122,37 @@ public class Movement : MonoBehaviour
 
     private void DashVertical()
     {
-        transform.Translate(transform.forward * dashDistance * dashSpeed * Input.GetAxis("Vertical"), Space.World); // Replace both for Addforce also makes jump same way
+       // transform.Translate(transform.forward * dashDistance * dashSpeed * Input.GetAxis("Vertical"), Space.World); // Replace both for Addforce also makes jump same way
+        rb.AddForce(transform.forward * dashDistance * dashSpeed * Input.GetAxis("Vertical"), ForceMode.Impulse);
     }
 
     private void DashHorizontal()
     {
-        transform.Translate(transform.right * dashDistance * dashSpeed * Input.GetAxis("Horizontal"), Space.World);
+        //transform.Translate(transform.right * dashDistance * dashSpeed * Input.GetAxis("Horizontal"), Space.World);
+        rb.AddForce(transform.right * dashDistance * dashSpeed * Input.GetAxis("Horizontal"), ForceMode.Impulse);
     }
+
+    private void Jump()
+    {
+        
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+            
+    }
+
+    bool IsTouchingFloor()
+    {
+        RaycastHit hit;
+
+        return Physics.SphereCast(transform.position, 0.1f, -transform.up, out hit, 1f); // creates a sphere to check if it hits something. Mine isn't working as i hoped to, but i couldn't figure out why
+
+    }
+
+
+
+
+
+
+
+
+
 }
