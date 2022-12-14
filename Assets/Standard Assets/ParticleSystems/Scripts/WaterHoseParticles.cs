@@ -7,6 +7,7 @@ namespace UnityStandardAssets.Effects
     {
         public static float lastSoundTime;
         public float force = 1;
+  
 
 
         private ParticleCollisionEvent[] m_CollisionEvents = new ParticleCollisionEvent[16];
@@ -40,11 +41,11 @@ namespace UnityStandardAssets.Effects
 
                 var col = m_CollisionEvents[i].colliderComponent;
 
-                if (col.attachedRigidbody != null)
+              /*  if (col.attachedRigidbody != null)
                 {
                     Vector3 vel = m_CollisionEvents[i].velocity;
                     col.attachedRigidbody.AddForce(vel*force, ForceMode.Impulse);
-                }
+                }*/
 
                 other.BroadcastMessage("Extinguish", SendMessageOptions.DontRequireReceiver);
 
