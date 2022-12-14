@@ -5,10 +5,12 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
-    [SerializeField] private float rotationSpeed;
+    
     [SerializeField] private float walkingSpeed;
-    [SerializeField] private float dashSpeed;
+    [SerializeField] private float dashDistance;
+    [SerializeField] private float dashSpeed;    
     [SerializeField] private LineRenderer lineRenderer;
+    private Rigidbody rb;
     private bool canDash;
     private bool dashing;
     public float time;
@@ -75,7 +77,16 @@ public class Movement : MonoBehaviour
     private void DashTrigger()
     {
         canDash = true;
-        transform.Translate(transform.forward * dashSpeed * Input.GetAxis("Vertical"), Space.World);
+
+       if(Input.GetAxis("Vertical")!= 0)
+        {
+            DashVertical();
+        }
+
+       if(Input.GetAxis("Horizontal") != 0)
+        {
+            DashHorizontal();
+        }
 
         if (canDash)
         {
@@ -95,8 +106,17 @@ public class Movement : MonoBehaviour
             dashing = false;
             time = 0;
         }
+             
 
-        
+    }
 
+    private void DashVertical()
+    {
+        transform.Translate(transform.forward * dashDistance * dashSpeed * Input.GetAxis("Vertical"), Space.World); // Replace both for Addforce also makes jump same way
+    }
+
+    private void DashHorizontal()
+    {
+        transform.Translate(transform.right * dashDistance * dashSpeed * Input.GetAxis("Horizontal"), Space.World);
     }
 }
