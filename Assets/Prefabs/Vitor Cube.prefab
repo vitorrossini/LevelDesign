@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1504421208246333429}
   - component: {fileID: 6147678849948117809}
   - component: {fileID: 1016713533892261923}
-  - component: {fileID: 6013003705179573566}
   m_Layer: 0
   m_Name: handle
   m_TagString: Untagged
@@ -85,19 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6013003705179573566
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364180330807252867}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1592080885207133217
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4208084181789894127
 Transform:
   m_ObjectHideFlags: 0
@@ -324,7 +310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6315157027003454327
 Transform:
   m_ObjectHideFlags: 0
@@ -455,7 +441,7 @@ GameObject:
   - component: {fileID: 6315157027284912603}
   m_Layer: 0
   m_Name: Vitor Cube
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -553,8 +539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df681a188ef350240a351091aca4315d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSpeed: 2
-  dashDistance: 2
+  walkingSpeed: 4
+  dashDistance: 4
   dashSpeed: 3
   jumpForce: 6
   lineRenderer: {fileID: 6315157027003454326}
