@@ -33,6 +33,7 @@ public class Timer : MonoBehaviour
                 TimeLeft = 0;
                 TimerOn = false;
                 loseUI.SetActive(true);
+                Cursor.visible = true;
             }
         }
     }

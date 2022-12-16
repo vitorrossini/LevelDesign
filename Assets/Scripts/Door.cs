@@ -12,6 +12,7 @@ public class Door : MonoBehaviour
         {
             Time.timeScale = 0;
             ui.SetActive(true);
+            Cursor.visible = true;
         }
     }
 }
