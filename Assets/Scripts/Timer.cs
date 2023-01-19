@@ -34,6 +34,7 @@ public class Timer : MonoBehaviour
                 TimerOn = false;
                 loseUI.SetActive(true);
                 Cursor.visible = true;
+                Time.timeScale = 0;
             }
         }
     }
